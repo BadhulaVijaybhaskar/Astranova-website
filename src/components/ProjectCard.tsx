@@ -4,7 +4,7 @@ import Image from "next/image";
 import { motion, useReducedMotion } from "framer-motion";
 import type { Project } from "@/content/site";
 import { ArrowUpRight } from "./Icons";
-import { duration, ease, viewOnce } from "@/lib/motion";
+import { duration, ease } from "@/lib/motion";
 import { useIsMobile } from "@/hooks/useIsMobile";
 
 const tints = [
@@ -23,10 +23,11 @@ export default function ProjectCard({ project, index }: { project: Project; inde
   return (
     <motion.article
       className="group h-full"
-      initial={{ opacity: 0, y }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={viewOnce}
-      transition={{ duration: duration.workIn, delay: index * 0.07, ease }}
+      // Revealed by the parent ProjectGrid's in-view trigger (once).
+      variants={{
+        hidden: { opacity: 0, y },
+        show: { opacity: 1, y: 0, transition: { duration: duration.workIn, delay: index * 0.07, ease } },
+      }}
     >
       <Wrapper
         {...(project.href ? { href: project.href } : {})}

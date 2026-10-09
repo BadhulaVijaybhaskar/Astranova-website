@@ -88,11 +88,7 @@ export default function Header() {
       }`}
       style={{ height: scrolled ? "var(--header-h-scrolled)" : "var(--header-h)" }}
     >
-      <div
-        className={`container-wide flex h-full items-center justify-between gap-6 transition-[padding] duration-300 ${
-          scrolled ? "py-0" : "py-0"
-        }`}
-      >
+      <div className="container-wide flex h-full items-center justify-between gap-6">
         <a href="#home" className="relative flex shrink-0 items-center" aria-label="Astranova, back to top">
           <Image
             src="/astranova-logo-wordmark.png"

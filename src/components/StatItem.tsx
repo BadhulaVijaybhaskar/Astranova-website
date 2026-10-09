@@ -17,9 +17,9 @@ export default function StatItem({ stat }: { stat: Stat }) {
   const match = !stat.nonNumeric ? stat.value.match(/^(\d+)(.*)$/) : null;
   const target = match ? parseInt(match[1], 10) : null;
   const suffix = match ? match[2] : "";
-  const [display, setDisplay] = useState(
-    target !== null && !reduce ? `0${suffix}` : stat.value,
-  );
+  // Initial value must not depend on reduced-motion (unknown during SSR) to avoid
+  // a hydration text mismatch; the effect below snaps to the final value when reduced.
+  const [display, setDisplay] = useState(target !== null ? `0${suffix}` : stat.value);
 
   useEffect(() => {
     if (target === null || reduce) {

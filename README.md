@@ -49,10 +49,26 @@ Optimized WebP/AVIF derivatives are in `public/optimized/` for reference; the si
 Optional:
 
 ```
-NEXT_PUBLIC_SITE_URL=https://www.astranova.example
+NEXT_PUBLIC_SITE_URL=https://astranovain.com
 ```
 
-Used for Open Graph / metadata base.
+Used for canonical URL, Open Graph / Twitter images, `robots.txt` and `sitemap.xml`
+(see `src/lib/site-url.ts`). If unset on Netlify, the Netlify-provided `URL`
+is used automatically; locally it falls back to `http://localhost:3000`.
+
+## SEO & app icons
+
+- Metadata (title, description, canonical, Open Graph, Twitter card) — `src/app/layout.tsx`
+- Social share image (1200×630) — `src/app/opengraph-image.jpg` / `twitter-image.jpg`
+- `robots.txt` / `sitemap.xml` — `src/app/robots.ts` / `src/app/sitemap.ts`
+- Favicons + PWA icons — `src/app/favicon.ico`, `src/app/apple-icon.png`, `public/astranova-favicon-*.png`, `src/app/manifest.ts`
+
+## Deploying to Netlify
+
+`netlify.toml` is included (build `npm run build`, publish `.next`). Netlify detects
+Next.js and applies its Next.js runtime automatically. In the Netlify UI: import the
+GitHub repo, keep the defaults from `netlify.toml`, and (once the domain is approved)
+set `NEXT_PUBLIC_SITE_URL`. DNS / email records are not managed by this repo.
 
 ## Contact form
 

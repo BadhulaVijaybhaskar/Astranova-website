@@ -242,9 +242,10 @@ body {
 .animate-watermark-float {
   animation: watermark-float 9s ease-in-out infinite;
 }
+/* Single restrained gradient sweep on load (no infinite repaint loop) */
 .animate-shimmer {
   background-size: 160% 100%;
-  animation: shimmer-x 9s ease-in-out infinite alternate;
+  animation: shimmer-x 2.8s var(--ease-aurora) 0.5s 1 both;
 }
 .animate-grow-line-x {
   transform-origin: left center;
@@ -258,7 +259,8 @@ body {
 @media (max-width: 767px) {
   /* Mobile: no continuous float / heavy background drift */
   .animate-aurora-drift,
-  .animate-watermark-float {
+  .animate-watermark-float,
+  .animate-shimmer {
     animation: none !important;
   }
 }

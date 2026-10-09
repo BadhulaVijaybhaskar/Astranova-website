@@ -2,33 +2,62 @@ import type { Metadata, Viewport } from "next";
 import { Manrope, Sora } from "next/font/google";
 import "./globals.css";
 import { company } from "@/content/site";
+import { siteUrl } from "@/lib/site-url";
 
 const sora = Sora({ subsets: ["latin"], variable: "--font-sora", display: "swap", weight: ["300", "400", "500", "600", "700"] });
 const manrope = Manrope({ subsets: ["latin"], variable: "--font-manrope", display: "swap" });
 
 export const metadata: Metadata = {
-  // Set NEXT_PUBLIC_SITE_URL to the live domain for correct social previews.
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000"),
+  // Canonical base: NEXT_PUBLIC_SITE_URL → Netlify URL → localhost (see src/lib/site-url.ts).
+  metadataBase: new URL(siteUrl),
   title: {
     default: `${company.name} | ${company.tagline}`,
     template: `%s | ${company.name}`,
   },
   description: company.description,
   applicationName: company.name,
+  keywords: [
+    "Astranova",
+    "Astranova Digital Services",
+    "AstraConnect",
+    "Beyond Frames",
+    "Astra Media",
+    "Astra Events",
+    "digital growth",
+    "AI products",
+    "creative and film",
+    "media networks",
+    "events and experiences",
+  ],
+  authors: [{ name: company.legalName }],
+  creator: company.legalName,
+  publisher: company.legalName,
+  alternates: { canonical: "/" },
+  formatDetection: { telephone: false, email: false, address: false },
+  robots: { index: true, follow: true },
   icons: {
     icon: [
       { url: "/favicon.ico", sizes: "any" },
       { url: "/astranova-favicon-16.png", sizes: "16x16", type: "image/png" },
       { url: "/astranova-favicon-32.png", sizes: "32x32", type: "image/png" },
       { url: "/astranova-favicon-64.png", sizes: "64x64", type: "image/png" },
+      { url: "/astranova-app-icon-192.png", sizes: "192x192", type: "image/png" },
     ],
+    apple: [{ url: "/apple-icon.png", sizes: "180x180", type: "image/png" }],
   },
+  // OG/Twitter images come from src/app/opengraph-image.jpg + twitter-image.jpg (1200×630).
   openGraph: {
     title: `${company.name} | ${company.tagline}`,
     description: company.description,
+    url: "/",
     siteName: company.legalName,
-    images: [{ url: "/astranova-hero-desktop.png", width: 1672, height: 941, alt: "Astranova aurora skyline" }],
+    locale: "en_IN",
     type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `${company.name} | ${company.tagline}`,
+    description: company.description,
   },
 };
 
