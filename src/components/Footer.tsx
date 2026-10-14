@@ -5,6 +5,7 @@ import { useState, type FormEvent } from "react";
 import { motion } from "framer-motion";
 import { company, footer, ventures } from "@/content/site";
 import { ArrowRight, SocialIcon } from "./Icons";
+import AddressLink from "./AddressLink";
 import { duration, ease, viewOnce } from "@/lib/motion";
 
 export default function Footer() {
@@ -50,6 +51,7 @@ export default function Footer() {
               <span className="block">{footer.statementLine1}</span>
               <span className="block text-aurora">{footer.statementLine2}</span>
             </p>
+            <AddressLink className="mt-5" />
             <ul className="mt-6 flex gap-2" aria-label="Social media">
               {footer.social.map((s) => (
                 <li key={s.label}>

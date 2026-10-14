@@ -47,3 +47,12 @@ export function SocialIcon({ name, className = "h-[18px] w-[18px]" }: P & { name
       );
   }
 }
+
+export function MapPin({ className = "h-4 w-4" }: P) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" className={className} aria-hidden="true">
+      <path d="M12 21s-6.5-5.6-6.5-11a6.5 6.5 0 1 1 13 0c0 5.4-6.5 11-6.5 11Z" stroke="currentColor" strokeWidth="1.7" strokeLinejoin="round" />
+      <circle cx="12" cy="10" r="2.4" stroke="currentColor" strokeWidth="1.7" />
+    </svg>
+  );
+}

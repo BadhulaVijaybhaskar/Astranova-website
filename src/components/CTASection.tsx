@@ -6,6 +6,7 @@ import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { cta } from "@/content/site";
 import Reveal from "./Reveal";
 import { ArrowRight } from "./Icons";
+import AddressLink from "./AddressLink";
 import { ease } from "@/lib/motion";
 
 /**
@@ -83,6 +84,7 @@ export default function CTASection() {
                   {cta.secondary.label}
                 </a>
               </div>
+              <AddressLink className="mt-8" />
             </Reveal>
 
             <Reveal delay={0.1} y={16} className="lg:col-span-7">

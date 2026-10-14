@@ -66,6 +66,20 @@ export const company = {
   brandFilmUrl: null as string | null,
 };
 
+/** Registered office. Edit here; Footer, Contact section and JSON-LD read from this. */
+export const office = {
+  label: "Office",
+  street: "Plot No 5, Inorbit Mall Rd, opposite Durgam Cheruvu, Doctor's Colony",
+  locality: "HITEC City",
+  city: "Hyderabad",
+  region: "Telangana",
+  postalCode: "500081",
+  country: "IN",
+};
+
+export const officeAddress = `${office.street}, ${office.locality}, ${office.city}, ${office.region} ${office.postalCode}`;
+export const officeMapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(officeAddress)}`;
+
 export const navigation: NavItem[] = [
   { label: "Home", href: "#home" },
   { label: "About", href: "#about" },

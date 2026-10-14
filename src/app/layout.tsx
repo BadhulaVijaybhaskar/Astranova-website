@@ -1,7 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Manrope, Sora } from "next/font/google";
 import "./globals.css";
-import { company } from "@/content/site";
+import { company, office } from "@/content/site";
 import { siteUrl } from "@/lib/site-url";
 
 const sora = Sora({ subsets: ["latin"], variable: "--font-sora", display: "swap", weight: ["300", "400", "500", "600", "700"] });
@@ -77,6 +77,27 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
           Skip to content
         </a>
         {children}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              name: company.legalName,
+              alternateName: company.name,
+              url: siteUrl,
+              logo: `${siteUrl}/astranova-logo-primary.png`,
+              address: {
+                "@type": "PostalAddress",
+                streetAddress: office.street,
+                addressLocality: `${office.locality}, ${office.city}`,
+                addressRegion: office.region,
+                postalCode: office.postalCode,
+                addressCountry: office.country,
+              },
+            }).replace(/</g, "\\u003c"),
+          }}
+        />
       </body>
     </html>
   );
